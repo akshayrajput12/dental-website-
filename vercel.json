@@ -1,0 +1,42 @@
+{
+  "version": 2,
+  "name": "dental-care-website",
+  "builds": [
+    { 
+      "src": "dist/index.html", 
+      "use": "@vercel/static" 
+    }
+  ],
+  "routes": [
+    { 
+      "src": "/(.*)", 
+      "dest": "/index.html" 
+    }
+  ],
+  "env": {
+    "VITE_APP_TITLE": "Dental Care Website"
+  },
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "framework": "vite",
+  "regions": ["all"],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
+      ]
+    }
+  ]
+}
